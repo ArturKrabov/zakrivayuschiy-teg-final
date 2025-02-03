@@ -1,0 +1,391 @@
+/* Здесь вы напишете основную часть стилей страницы.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ theme-dark — класс тёмной темы
+✦ theme-light — класс светлой темы
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+
+Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
+
+*/
+
+:root {
+  --content-size: 50vw;
+}
+
+.page {
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
+
+  background-color: var(--background-color);
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  background-image: var(--background-image);
+  background-size: 4px;
+  background-repeat: repeat;
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  background-color: var(--background-color);
+  border: 2px solid var(--accent-color);
+
+  inline-size: var(--content-size);
+  block-size: 360px;
+  margin: 100px auto;
+
+  font-family: "Press Start 2P", sans-serif;
+  color: var(--accent-color);
+}
+
+.header-section {
+  text-align: center;
+}
+
+.header__subtitle {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+.theme-menu {
+  align-self: center;
+  margin-block-start: 25px;
+  margin-block-end: 25px;
+}
+
+
+.theme-menu__item:nth-child(2) {
+  margin-block-start: 14px;
+  margin-block-end: 14px;
+}
+
+.theme-menu__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.theme-menu__button::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 3px;
+  margin-top: 0px;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: width ease 0.3s;
+}
+
+.theme-menu__button:focus::after {
+  width: 100%;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.theme-menu__button:hover {
+  color: rgba(0, 0, 0, 0.6);
+  transition: color ease 0.3s;
+}
+
+.theme-menu__button:disabled {
+  position: relative;
+  color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+.theme-dark .theme-menu__button:disabled {
+  color: var(--accent-color);
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  left: -15px;
+}
+
+.post {
+  font-family: "Inter", sans-serif;
+  color: var(--accent-color);
+
+  background-color: var(--background-color);
+  border: 2px solid var(--accent-color);
+
+  inline-size: var(--content-size);
+  margin: 0 auto;
+  padding-block-end: 37.5px;
+}
+
+.post__title {
+  font-variation-settings: "wght" 700;
+  font-size: 18px;
+  line-height: 22px;
+
+  border-bottom: 2px solid var(--accent-color);
+
+  padding-inline-start: 10px;
+  padding-block-start: 3px;
+  padding-block-end: 3px;
+}
+
+.post__image {
+  aspect-ratio: 1/1;
+  width: 100%;
+  border: none;
+}
+
+.post-text {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  padding-inline-start: 25px;
+  padding-inline-end: 25px;
+  padding-block-start: 25px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.card__like-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 25px 25px 0;
+  align-items: center;
+}
+
+.card__icon-button {
+  display: flex;
+  border: none;
+  background: none;
+  height: 38px;
+  margin-right: 4px;
+  padding: 0;
+  outline: none;
+}
+
+.like-icon__main-body {
+  fill: var(--background-color);
+}
+
+.like-icon:hover .like-icon__main-body {
+  transition: fill linear 0.3s 0.05s;
+  fill: var(--accent-color);
+}
+
+.like-icon__core {
+  transition: fill linear 0.3s 0.03s;
+  fill: var(--background-color);
+}
+
+.like-icon:hover .like-icon__core {
+  transition: fill linear 0.3s;
+  fill: var(--accent-color);
+}
+
+.like-icon .like-icon__core {
+  fill: var(--background-color);
+}
+
+.like-icon:active .like-icon__main-body {
+  transition: fill linear 0.3s;
+  fill: var(--heart-color);
+}
+
+.like-icon:active .like-icon__core {
+  transition: fill linear 0.3s;
+  fill: var(--heart-color);
+}
+
+.like-icon.is-liked .like-icon__core {
+  transition: fill linear 0.3s;
+  fill: var(--heart-color);
+}
+
+.like-icon.is-liked .like-icon__main-body {
+  transition: fill linear 0.3s;
+  fill: var(--heart-color);
+}
+
+.like-icon.is-liked .like-icon__contour {
+  transition: fill linear 0.3s 0.06s;
+  fill: var(--heart-color);
+}
+
+.like-icon__sparks {
+  opacity: 0;
+}
+
+.like-icon {
+  align-self: center;
+}
+
+.like-icon:focus {
+  outline: none;
+}
+
+.like-icon:focus-visible {
+  outline: 2px solid var(--accent-color);
+}
+
+.card__like-button {
+  background: none;
+  position: relative;
+  overflow: hidden;
+
+  border: 2px solid var(--accent-color);
+  padding-top: 12.5px;
+  padding-bottom: 12.5px;
+  width: 130px;
+}
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.card__like-button:hover {
+  color: #000000;
+}
+
+.card__like-button:hover::before {
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button__text {
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 14px;
+  line-height: 12.6px;
+
+  text-align: center;
+  position: relative;
+
+  transition: color ease 1s;
+}
+
+.button__text:hover {
+  color: #ffffff;
+  transition: color ease 1s;
+}
+
+.card__like-button:focus {
+  outline: 0;
+  box-shadow: 2px 2px 0 #000000;
+  transition: box-shadow ease 0.3s;
+}
+
+.floppy-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 52px auto 102px auto;
+  position: relative;
+
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 12.6px;
+}
+
+.floppy-icon {
+  width: 39px;
+  height: 39px;
+
+  color:black;
+}
+
+.floppy__button {
+  overflow: hidden;
+  position: relative;
+  background-color: var( --background-color);
+  outline: none;
+
+  padding: 18.5px 21px 18.5px 19px;
+  border: 2px solid var(--accent-color);
+  max-width: 360px;
+}
+
+.floppy__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--button-hover);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.floppy__button:hover {
+  color: var(--button-hover);
+}
+
+.floppy__button:hover .floppy-text {
+  color: #ffffff;
+  transition: color ease 1s;
+}
+
+.floppy__button:hover .floppy {
+  fill: #ffffff;
+  transition: fill ease 1s;
+}
+
+.floppy__button:hover::before {
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.floppy-text {
+  position: relative;
+  z-index: 1;
+  color: var(--accent-color);
+}
+
+.floppy__button:focus {
+  outline: 0;
+  box-shadow: 2px 2px 0 #000000;
+  transition: box-shadow ease 0.3s;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --content-size: 100vw;
+  }
+
+  .floppy__button {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .floppy__button svg {
+    margin: 0 auto;
+  }
+}

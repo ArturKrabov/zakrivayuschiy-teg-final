@@ -1,0 +1,9 @@
+/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+    --background-color: #FFFFFF;
+    --accent-color: #000000;
+    --background-image: url(../svg/pattern-light.svg);
+    --heart-color: #FF0000;
+    --button-hover: #000000;
+}
+
