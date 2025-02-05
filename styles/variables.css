@@ -1,9 +1,15 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
-    --background-color: #FFFFFF;
-    --accent-color: #000000;
-    --background-image: url(../svg/pattern-light.svg);
-    --heart-color: #FF0000;
-    --button-hover: #000000;
+  --background-color: #ffffff;
+  --accent-color: #000000;
+  --text-color: #000000;
+  --inversion-color: #ffffff;
+  --background-image: url(../svg/pattern-light.svg);
+  --background-gradient: #d3d3d3;
+  --background-gradient-start: #e7e7e7;
+  --background-gradient-end: #1a1a1a;
+  --heart-color: #ff0000;
+  --button-hover: #000000;
+  --accent-font: "Press Start 2P", sans-serif;
+  --main-font-weight: 400;
 }
-
